@@ -70,9 +70,6 @@ func TestGroupMsgProvider(t *testing.T) {
 			SiteURL: "http://test.url",
 			TeamId:  team.Id,
 			UserId:  th.BasicUser.Id,
-			Session: model.Session{
-				Roles: "",
-			},
 		}, targetUsers+"hello")
 
 		assert.Equal(t, "api.command_groupmsg.permission.app_error", resp.Text)
@@ -87,9 +84,6 @@ func TestGroupMsgProvider(t *testing.T) {
 			SiteURL: "http://test.url",
 			TeamId:  team.Id,
 			UserId:  th.BasicUser.Id,
-			Session: model.Session{
-				Roles: model.SYSTEM_USER_ROLE_ID,
-			},
 		}, targetUsers+"hello")
 
 		assert.Equal(t, "api.command_groupmsg.invalid_user.app_error", resp.Text)
@@ -102,9 +96,6 @@ func TestGroupMsgProvider(t *testing.T) {
 			SiteURL: "http://test.url",
 			TeamId:  team.Id,
 			UserId:  th.BasicUser.Id,
-			Session: model.Session{
-				Roles: model.SYSTEM_USER_ROLE_ID,
-			},
 		}, targetUsers+"hello")
 
 		channelName := model.GetGroupNameFromUserIds([]string{th.BasicUser.Id, th.BasicUser2.Id, user3.Id})
@@ -118,9 +109,6 @@ func TestGroupMsgProvider(t *testing.T) {
 			SiteURL: "http://test.url",
 			TeamId:  team.Id,
 			UserId:  th.BasicUser.Id,
-			Session: model.Session{
-				Roles: "",
-			},
 		}, targetUsers+"hello")
 
 		channelName := model.GetGroupNameFromUserIds([]string{th.BasicUser.Id, th.BasicUser2.Id, user3.Id})

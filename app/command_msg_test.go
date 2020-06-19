@@ -26,9 +26,6 @@ func TestMsgProvider(t *testing.T) {
 		SiteURL: "http://test.url",
 		TeamId:  team.Id,
 		UserId:  th.BasicUser.Id,
-		Session: model.Session{
-			Roles: "",
-		},
 	}, "@"+th.BasicUser2.Username+" hello")
 
 	channelName := model.GetDMNameFromIds(th.BasicUser.Id, th.BasicUser2.Id)
@@ -41,9 +38,6 @@ func TestMsgProvider(t *testing.T) {
 		SiteURL: "http://test.url",
 		TeamId:  team.Id,
 		UserId:  th.BasicUser.Id,
-		Session: model.Session{
-			Roles: model.SYSTEM_USER_ROLE_ID,
-		},
 	}, "@"+th.BasicUser2.Username+" hello")
 
 	assert.Equal(t, "", resp.Text)
@@ -55,9 +49,6 @@ func TestMsgProvider(t *testing.T) {
 		SiteURL: "http://test.url",
 		TeamId:  team.Id,
 		UserId:  th.BasicUser.Id,
-		Session: model.Session{
-			Roles: "",
-		},
 	}, "@"+th.BasicUser2.Username+" hello")
 
 	assert.Equal(t, "", resp.Text)
@@ -76,9 +67,6 @@ func TestMsgProvider(t *testing.T) {
 		SiteURL: "http://test.url",
 		TeamId:  th.BasicTeam.Id,
 		UserId:  guest.Id,
-		Session: model.Session{
-			Roles: model.SYSTEM_GUEST_ROLE_ID,
-		},
 	}, "@"+user.Username+" hello")
 
 	assert.Equal(t, "api.command_msg.missing.app_error", resp.Text)
@@ -93,9 +81,6 @@ func TestMsgProvider(t *testing.T) {
 		SiteURL: "http://test.url",
 		TeamId:  th.BasicTeam.Id,
 		UserId:  guest.Id,
-		Session: model.Session{
-			Roles: model.SYSTEM_GUEST_ROLE_ID,
-		},
 	}, "@"+user.Username+" hello")
 
 	channelName = model.GetDMNameFromIds(guest.Id, user.Id)
